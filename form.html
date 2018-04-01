@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang= 'en'>
+	<head>
+		<meta charset="utf-8">
+		<title>FORM</title>
+		<style>
+			h1{
+				text-align: center;
+			}
+			form{
+				text-align:center;
+				border: 2px solid black;
+   				padding: 10px;
+    			border-radius: 25px;
+    			margin-top: 100px;
+    			margin-bottom: 100px;
+    			margin-right: 150px;
+   				margin-left: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Krince Liu </h1>
+
+		<form id="iniform" method='POST' action='/'>
+			<label for='client'>Client 1</label><br />
+
+			<label for='fname'>First NAME:</label> 
+            <input name='fname-1' type='text' /> <br />
+
+            <label for='lname'>Last NAME:</label> 
+            <input name='lname-1' type='text' /> <br />
+
+            <label for='birthday'>BIRTHDAY:</label> 
+            <input name='birthday-1' type='date'  /> <br />
+
+            <label for='email'>EMAIL Address:</label> 
+            <input name='email-1' type='text' autofocus />
+
+            <label id='email-1' > <b> + </b> </label> <br />
+
+            <br/ id='seperater-1'>
+            <br/ id='bot'>
+            <input type='submit' value="SUBMIT" />
+            <input type='button' value="ADD" id='add' />
+		</form>
+
+		<script type="text/javascript">
+			var user = 1;
+			document.getElementById('add').addEventListener('click',add);
+			document.getElementById('email-1').addEventListener('click',addone);
+
+
+
+			function add(){
+				user = user + 1;
+				var refnode = document.getElementById('bot');
+				var parnode = refnode.parentNode;
+				// label1 
+				var l1 = document.createElement('label');
+				l1.for = 'client';
+				l1.innerHTML = 'Client '+ user.toString();
+				parnode.insertBefore(l1,refnode);
+				parnode.insertBefore(document.createElement('br'),refnode);
+
+				// first name 
+				var fn = document.createElement('label');
+				fn.for = 'fname';
+				fn.innerHTML = 'First NAME:';
+				parnode.insertBefore(fn,refnode);
+
+				fn = document.createElement('input');
+				fn.type ='text';
+				fn.name = 'fname-'+user.toString();
+				parnode.insertBefore(fn,refnode);
+				parnode.insertBefore(document.createElement('br'),refnode);
+
+				// last name
+				var ln = document.createElement('label');
+				ln.for = 'lname';
+				ln.innerHTML = 'Last NAME:';
+				parnode.insertBefore(ln,refnode);
+
+				ln = document.createElement('input');
+				ln.type = 'text';
+				ln.name = 'lname-' + user.toString();
+				parnode.insertBefore(ln,refnode);
+				parnode.insertBefore(document.createElement('br'),refnode);
+
+				//birthday
+				var bd = document.createElement('label');
+				bd.for = 'birthday';
+				bd.innerHTML = 'BIRTHDAY';
+				parnode.insertBefore(bd,refnode);
+
+				bd = document.createElement('input');
+				bd.type ='date';
+				bd.name = 'birthday-' + user.toString();
+				parnode.insertBefore(bd,refnode);
+				parnode.insertBefore(document.createElement('br'),refnode);
+
+				//email 
+				var em = document.createElement('label');
+				em.for = 'email';
+				em.innerHTML = 'EMAIL Address:';
+				parnode.insertBefore(em,refnode);
+
+				em = document.createElement('input');
+				em.type = 'text';
+				em.name ='email-' + user.toString();
+				parnode.insertBefore(em,refnode);
+
+				// plus 
+				var pl = document.createElement('label');
+				pl.id = 'email-' + user.toString();
+				pl.innerHTML = '<b> + </b>';
+				pl.addEventListener('click',addone);
+				parnode.insertBefore(pl,refnode);
+				parnode.insertBefore(document.createElement('br'),refnode);
+
+				//seperater
+				var sp = document.createElement('br');
+				sp.id = 'seperater-' + user.toString();
+				parnode.insertBefore(sp,refnode);
+
+
+			}
+			
+			function addone(){
+				var whosep = this.getAttribute('id').substring(6,this.getAttribute('id').length);
+				var refnode = document.getElementById('seperater-'+whosep);
+				var parnode = refnode.parentNode;
+				
+				var newnode2= document.createElement('label');
+				newnode2.for = 'email';
+				newnode2.innerHTML = 'EMAIL Address:';
+				parnode.insertBefore(newnode2,refnode);
+
+				var newnode = document.createElement('input');
+				var whoemail = this.getAttribute('id');
+				newnode.type = 'text';
+				newnode.name = whoemail;
+				parnode.insertBefore(newnode,refnode);
+
+				var newnode3 = document.createElement('br');
+				parnode.insertBefore(newnode3,refnode);
+
+			}		
+
+		</script>
+	</body>	
+</html>	
